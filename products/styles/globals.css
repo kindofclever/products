@@ -25,6 +25,6 @@
   }
 
   li {
-      @apply list-none cursor-pointer; 
+      @apply list-none ; 
   }
 }
