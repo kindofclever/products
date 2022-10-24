@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import ProductList from "../components/ProductList";
 import Link from "next/link";
+import Filter from "../components/Filter";
 
 export const getStaticProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
@@ -13,6 +15,25 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ products }) {
+  const [value, setValue] = useState("all");
+  const filterValueSelected = (filterValue) => {
+    setValue(filterValue);
+  };
+
+  const category = products.filter((product) => {
+    if (value === `men's clothing`) {
+      return product.category === `men's clothing`;
+    } else if (value === `jewelery`) {
+      return product.category === `jewelery`;
+    } else if (value === `electronics`) {
+      return product.category === `electronics`;
+    } else if (value === `women's clothing`) {
+      return product.category === `women's clothing`;
+    } else {
+      return;
+    }
+  });
+
   return (
     <div className="w-full h-full">
       <Head>
@@ -24,31 +45,8 @@ export default function Home({ products }) {
         <h1 className="">Products</h1>
       </header>
       <main className="flex flex-col justify-center items-center max-w-[100%]">
-        <ul>
-          {products.map((product) => {
-            return (
-              <li className="m-5 border-dotted border-2 p-5 flex flex-col">
-                <h3 className="underline mb-3">{product.title}</h3>
-                <h4 className="mb-3">Price: {product.price}$</h4>
-                <p className="mb-3">Description: {product.description}</p>
-                <div className="h-20% w-50%">
-                  <Image
-                    src="https://picsum.photos/200/300/"
-                    alt={product.title}
-                    height={300}
-                    width={200}
-                  />
-                </div>
-
-                <Link href={`products/${product.id}`} key={product.id}>
-                  <button className=" cursor-pointer h-[30px] border-2">
-                    See details
-                  </button>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Filter products={products} filterValueSelected={filterValueSelected} />
+        <ProductList products={category} />
       </main>
     </div>
   );
