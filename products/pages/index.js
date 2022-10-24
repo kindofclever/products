@@ -29,6 +29,8 @@ export default function Home({ products }) {
       return product.category === `electronics`;
     } else if (value === `women's clothing`) {
       return product.category === `women's clothing`;
+    } else if (value === `all`) {
+      return product;
     } else {
       return;
     }
