@@ -7,20 +7,23 @@ import { useEffect, useState } from "react";
 const product = () => {
 	const router = useRouter();
 	var { id } = router.query;
-    console.log(id)
     if (!id){
         return 
         <></>;
-    }
+    }  
+    
     var product = products.find((element) => (element.id = id));  
-        return (
-            <ul > 
-                <ul>{id}</ul>               
-                <ul> {product.title} </ul>
-                <ul> Price: {product.price} </ul>
-                <ul> Description: {product.description}</ul>
-            </ul>
-        );
+    console.log(id, product)
+    return (
+        <>
+        <ul >               
+            <ul> {product.title} </ul>
+            <ul> Price: {product.price} </ul>
+            <ul> Description: {product.description}</ul>
+        </ul>
+        </>
+    );
+    
     }
 
 
