@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ products }) {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-full h-full">
       <Head>
         <title>Products | Home</title>
         <meta name="description" content="Next.js" />
@@ -23,27 +23,28 @@ export default function Home({ products }) {
       <header className="flex flex-col justify-center items-center">
         <h1 className="">Products</h1>
       </header>
-      <main className="flex flex-col justify-center items-center max-w-[50%]">
+      <main className="flex flex-col justify-center items-center max-w-[100%]">
         <ul>
           {products.map((product) => {
             return (
-              <li className="m-5 border-dotted border-2 p-5">
+              <li className="m-5 border-dotted border-2 p-5 flex flex-col">
                 <h3 className="underline mb-3">{product.title}</h3>
                 <h4 className="mb-3">Price: {product.price}$</h4>
                 <p className="mb-3">Description: {product.description}</p>
-                <div className="grid grid-cols-2 gap-2 justify-center items-center">
+                <div className="h-20% w-50%">
                   <Image
                     src="https://picsum.photos/200/300/"
                     alt={product.title}
                     height={300}
                     width={200}
                   />
-                  <Link href={`products/${product.id}`} key={product.id}>
-                    <button className=" cursor-pointer h-[30px] border-2">
-                      See details
-                    </button>
-                  </Link>
                 </div>
+
+                <Link href={`products/${product.id}`} key={product.id}>
+                  <button className=" cursor-pointer h-[30px] border-2">
+                    See details
+                  </button>
+                </Link>
               </li>
             );
           })}
