@@ -10,8 +10,7 @@ const product = () => {
     if (!id){
         return 
         <></>;
-    }  
-    
+    }     
     var product = products.find((element) => (element.id = id));  
     console.log(id, product)
     return (
