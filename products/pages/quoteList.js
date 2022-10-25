@@ -23,7 +23,8 @@ export default function QuoteList() {
      <h1>Quotes</h1>
      <ul>
           {quotes.map((quote) => {
-            return (<li>{quote.value} </li>);
+            return (<li>{quote.value} 
+              <Counter id ={quote.id}/> </li>);
           })}
         </ul>
    </div>
