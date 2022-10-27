@@ -6,14 +6,14 @@ import { getFirestore } from 'firebase/firestore';
 import 'firebase/storage';
 
 
-const firebaseConfig = { 
+const firebaseConfig = {
         apiKey: "AIzaSyDjQ15ZcHh_3Ka1HGoM7I5kv1l_PaZb37o",
         authDomain: "quotescounter-e3aaf.firebaseapp.com",
         projectId: "quotescounter-e3aaf",
         storageBucket: "quotescounter-e3aaf.appspot.com",
         messagingSenderId: "1008425407015",
-        appId: "1:1008425407015:web:925c048f5c7f1a08203402"   
-};
+        appId: "1:1008425407015:web:925c048f5c7f1a08203402"
+      };
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
